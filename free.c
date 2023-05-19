@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:06:03 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/19 10:39:34 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/19 10:41:56 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	free_char_sstar(char **src)
 	{
 		free(src[i]);
 	}
-		free(src);
+	free(src);
 }

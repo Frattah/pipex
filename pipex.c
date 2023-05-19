@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 08:35:23 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/19 10:39:01 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/19 10:42:30 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*find_exec(char **src, char **argv)
 		*src = ft_strconc(*src, ft_strdup("/"));
 		*src = ft_strconc(*src, ft_strdup(argv[2]));
 		if (!access(*src, 1))
-			return (*src) ;
+			return (*src);
 		src++;
 	}
 	return (NULL);

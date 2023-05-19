@@ -6,11 +6,11 @@
 #    By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 10:58:18 by frmonfre          #+#    #+#              #
-#    Updated: 2023/05/19 09:54:58 by frmonfre         ###   ########.fr        #
+#    Updated: 2023/05/19 10:41:40 by frmonfre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	pipex.c concatenate.c ft_split.c free.c utils.c
+SRCS	=	pipex.c concatenate.c ft_split.c free.c
 
 OBJS	=	$(SRCS:.c=.o)
 
