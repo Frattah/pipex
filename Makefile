@@ -6,7 +6,7 @@
 #    By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 10:58:18 by frmonfre          #+#    #+#              #
-#    Updated: 2023/05/18 11:53:20 by frmonfre         ###   ########.fr        #
+#    Updated: 2023/05/19 08:46:25 by frmonfre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ fclean: clean
 re: fclean all
 
 push:
+	make fclean
 	git add .
 	git commit -m "Makefile auto-commit"
 	git push

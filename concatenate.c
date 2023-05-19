@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:52:09 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/18 11:08:20 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/19 08:40:24 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (ln + ft_strlen_chr(src, '\0'));
 }
 
-
 char	*ft_strdup(const char *s1)
 {
 	char	*nw;
@@ -61,5 +60,5 @@ char	*ft_strconc(char *s1, char *s2)
 	ft_strlcat(nw, s2, ln);
 	free(s1);
 	free(s2);
-	return  (nw);
+	return (nw);
 }

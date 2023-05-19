@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/19 08:36:04 by frmonfre          #+#    #+#             */
+/*   Updated: 2023/05/19 08:40:02 by frmonfre         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 # include <fcntl.h>	// open
@@ -6,7 +18,6 @@
 # include <sys/wait.h>	// waitpid
 # include <stdlib.h>
 # include <stddef.h>	// size_t
-
 
 size_t	cntword(char const *s, char c);
 char	*skpstr(char *s, char c);
