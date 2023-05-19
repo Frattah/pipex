@@ -32,6 +32,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 void	free_char_sstar(char **src);
 
 char	*find_env_var(char **envp, char *var);
-char	*find_exec(char **src, char **argv);
+char	*find_exec(char **src, char *cmd);
+void	exec(char *cmd, char **envp);
 
 #endif

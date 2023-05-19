@@ -26,23 +26,12 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	*path;
-	char	**src;
-	int		fd1;
-	int		fd2;
+	int		fdin;
+	int		fdout;
 
-	path = find_env_var(envp, "PATH");
-	src = ft_split(path, ':');
-	path = find_exec(src, argv);
-	fd1 = open(argv[1], O_RDONLY);
-	fd2 = open(argv[4], O_WRONLY, O_TRUNC, O_CREAT);
-	argv[3] = NULL;
-	if (path != NULL)
-	{
-		execve(path, argv + 2, envp);
-		free(path);
-	}
-	free_char_sstar(src);
-	close(fd1);
-	close(fd2);
+	fdin = open(argv[1], O_RDONLY);
+	fdout = open(argv[argc - 1], O_WRONLY, O_TRUNC, O_CREAT);
+	exec(argv[2], envp);
+	close(fdin);
+	close(fdout);
 }
