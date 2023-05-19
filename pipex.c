@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 08:35:23 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/19 10:42:30 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:04:15 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
 		i++;
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
-}
-
-char	*find_env_var(char **envp, char *var)
-{
-	if (var == NULL)
-		return (NULL);
-	while (*envp)
-	{
-		if (!ft_strncmp(*envp, "PATH", 4))
-			return (*envp);
-		envp++;
-	}
-	return (NULL);
-}
-
-char	*find_exec(char **src, char **argv)
-{
-	ft_strlcpy(*src, *src + 5, ft_strlen_chr(*src, '\0'));
-	while (*src)
-	{
-		*src = ft_strconc(*src, ft_strdup("/"));
-		*src = ft_strconc(*src, ft_strdup(argv[2]));
-		if (!access(*src, 1))
-			return (*src);
-		src++;
-	}
-	return (NULL);
 }
 
 int	main(int argc, char **argv, char **envp)

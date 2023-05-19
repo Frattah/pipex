@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 08:36:04 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/19 09:52:45 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/19 11:02:55 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 void	free_char_sstar(char **src);
 
-char	*ft_strtrim(char const *s, char const *set);
+char	*find_env_var(char **envp, char *var);
+char	*find_exec(char **src, char **argv);
 
 #endif
