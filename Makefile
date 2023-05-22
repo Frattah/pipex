@@ -28,6 +28,14 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAG) $(OBJS) -o $(NAME)
 	norminette
+	@echo "______ _                 "
+	@echo "| ___ (_)                "
+	@echo "| |_/ /_ _ __   _____  __"
+	@echo "|  __/| | '_ \ / _ \ \/ /"
+	@echo "| |   | | |_) |  __/>  < "
+	@echo "\\_|   |_| .__/ \\___/_/\\_\\"
+	@echo "        | |              "
+	@echo "        |_|              "
 
 clean:
 	rm -rf $(OBJS)
