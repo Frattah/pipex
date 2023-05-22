@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 08:35:23 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/19 11:02:03 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:00:35 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ void	exec(char *cmd, char **envp)
 {
 	char	*path;
 	char	**src;
+	char	**args;
 
+	args = ft_split(cmd, ' ');
 	path = find_env_var(envp, "PATH");
 	src = ft_split(path, ':');
-	path = find_exec(src, cmd);
+	path = find_exec(src, args[0]);
 	if (path != NULL)
 	{
-		execve(path, NULL, envp);
+		execve(path, args, envp);
 		free(path);
 	}
 	free_char_sstar(src);
