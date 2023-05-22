@@ -1,57 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   concatenate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 10:39:44 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/18 10:42:12 by frmonfre         ###   ########.fr       */
+/*   Created: 2023/05/18 10:52:09 by frmonfre          #+#    #+#             */
+/*   Updated: 2023/05/19 10:39:28 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-size_t	cntword(char const *s, char c)
-{
-	size_t	i;
-	size_t	w;
-
-	i = 0;
-	w = 0;
-	if (s == NULL || *s == '\0')
-		return (0);
-	while (s[i])
-	{
-		while (s[i] && s[i] != c)
-			i++;
-		while (s[i] && s[i] == c)
-		{
-			if (i != 0 && s[i - 1] != c)
-				w++;
-			i++;
-		}
-	}
-	if (s[i - 1] != '\0' && s[i - 1] != c)
-		w++;
-	return (w);
-}
-
-char	*skpstr(char *s, char c)
-{
-	while (*s && *s == c)
-		s++;
-	return (s);
-}
-
-size_t	ft_strlen_chr(const char *s, char c)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	ln;
+	size_t	i;
 
-	ln = 0;
-	while (s[ln] && s[ln] != c)
-		ln++;
-	return (ln);
+	if (dst == NULL && dstsize == 0)
+		return (ft_strlen_chr(src, '\0'));
+	ln = ft_strlen_chr(dst, '\0');
+	i = -1;
+	if (dstsize == 0)
+		return (ft_strlen_chr(src, '\0'));
+	if (ln < dstsize - 1 && dstsize > 0)
+	{
+		while (src[++i] && ln + i < dstsize - 1)
+			dst[ln + i] = src[i];
+		dst[ln + i] = '\0';
+	}
+	if (ln > dstsize)
+		ln = dstsize;
+	return (ln + ft_strlen_chr(src, '\0'));
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*nw;
+	size_t	len;
+
+	len = ft_strlen_chr(s1, '\0') + 1;
+	nw = (char *) malloc(sizeof(char) * len);
+	if (nw == NULL)
+		return (NULL);
+	ft_strlcpy(nw, s1, len);
+	return (nw);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
@@ -71,28 +76,18 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen_chr(src, '\0'));
 }
 
-char	**ft_split(char const *s, char c)
+char	*ft_strconc(char *s1, char *s2)
 {
-	char	**split;
-	size_t	words;
-	char	*s_cpy;
-	size_t	len;
+	char	*nw;
+	size_t	ln;
 
-	words = cntword(s, c);
-	split = (char **) malloc(sizeof(char *) * (words + 1));
-	if (split == NULL)
+	ln = ft_strlen_chr(s1, '\0') + ft_strlen_chr(s2, '\0') + 1;
+	nw = (char *) malloc(sizeof(char) * ln);
+	if (nw == NULL)
 		return (NULL);
-	s_cpy = (char *) s;
-	split[words] = NULL;
-	while (s != NULL && *s != 0 && words--)
-	{
-		s_cpy = skpstr(s_cpy, c);
-		len = ft_strlen_chr(s_cpy, c);
-		*split = (char *) malloc(sizeof(char) * (len + 1));
-		if (*split == NULL)
-			return (NULL);
-		ft_strlcpy(*split++, s_cpy, len + 1);
-		s_cpy += len;
-	}
-	return (split - cntword(s, c));
+	ft_strlcat(nw, s1, ft_strlen_chr(s1, '\0') + 1);
+	ft_strlcat(nw, s2, ln);
+	free(s1);
+	free(s2);
+	return (nw);
 }
