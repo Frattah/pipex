@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 08:35:23 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/22 11:11:38 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:10:07 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	redir(t_pipex_ist *ist, int i)
 {
-	if (i == 1)
+	if (i == 2)
 	{
 		dup2(ist->pipe_fd[1], STDOUT_FILENO);
 		close(ist->pipe_fd[1]);
@@ -53,7 +53,7 @@ int	launch(t_pipex_ist *ist, char **av, char **en)
 	int	pid;
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (++i < ist->ac - 1)
 	{
 		if (i != ist->ac - 2)
@@ -83,6 +83,8 @@ int	main(int ac, char **av, char **en)
 	int			pid;
 	t_pipex_ist	*ist;
 
+	if (ac <= 4)
+		return (write(2, "Invalid number of arguments\n", 28));
 	ist = pipex_ist_init(ac, av);
 	launch(ist, av, en);
 	close(ist->fdout);
