@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 08:35:23 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/23 11:16:07 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:18:22 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ t_pipex_ist	*pipex_ist_init(int ac, char **av)
 	if (!ist)
 	{
 		write(2, "Error: malloc has not allocated\n", 32);
+		return (NULL);
+	}
+	if (!access(ac[1], F_OK))
+		ist->fdin = open(av[1], O_RDONLY);
+	else
+	{
+		free(ist);
 		return (NULL);
 	}
 	ist->fdout = open(av[ac - 1], O_CREAT | O_WRONLY | O_TRUNC,
