@@ -6,7 +6,7 @@
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 08:35:23 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/23 11:18:22 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:27:26 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	redir(t_pipex_ist *ist, int i)
 {
 	if (i == 2)
 	{
+		dup2(ist->fdin, STDIN_FILENO);
 		dup2(ist->pipe_fd[1], STDOUT_FILENO);
 		close(ist->pipe_fd[1]);
 		close(ist->pipe_fd[0]);
@@ -44,7 +45,7 @@ t_pipex_ist	*pipex_ist_init(int ac, char **av)
 		write(2, "Error: malloc has not allocated\n", 32);
 		return (NULL);
 	}
-	if (!access(ac[1], F_OK))
+	if (!access(av[1], F_OK))
 		ist->fdin = open(av[1], O_RDONLY);
 	else
 	{
@@ -60,7 +61,6 @@ t_pipex_ist	*pipex_ist_init(int ac, char **av)
 	}
 	ist->tmp = dup(STDIN_FILENO);
 	ist->ac = ac;
-	ist->fdin = -1;
 }
 
 int	launch(t_pipex_ist *ist, char **av, char **en)
@@ -102,7 +102,10 @@ int	main(int ac, char **av, char **en)
 		return (write(2, "Invalid number of arguments\n", 28));
 	ist = pipex_ist_init(ac, av);
 	if (!ist)
+	{
+		write(2, "Error\n", 6);
 		return (1);
+	}
 	launch(ist, av, en);
 	close(ist->fdout);
 	free(ist);
