@@ -83,6 +83,13 @@ int	main(int ac, char **av, char **en)
 	int			pid;
 	t_pipex_ist	*ist;
 
+	if (ac < 4)
+	{
+		write(STDERR_FILENO, "Usage: ", 7);
+		write(STDERR_FILENO, av[0], ft_strlen_chr(av[0], '\0'));
+		write(STDERR_FILENO, " cmd1 cmd2 outfile\n", 19);
+		exit(1);
+	}
 	ist = pipex_ist_init(ac, av);
 	launch(ist, av, en);
 	close(ist->fdout);
