@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execution.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/26 09:39:44 by frmonfre          #+#    #+#             */
+/*   Updated: 2023/05/26 09:39:50 by frmonfre         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 char	*find_env_var(char **envp, char *var)
@@ -15,7 +27,7 @@ char	*find_env_var(char **envp, char *var)
 
 char	*find_exec(char **src, char *cmd)
 {
-	ft_strlcpy(*src, *src + 5, ft_strlen_chr(*src, '\0'));
+	ft_strlcpy(*src, *src + 5, ft_strlen(*src, '\0'));
 	while (*src)
 	{
 		*src = ft_strconc(*src, ft_strdup("/"));

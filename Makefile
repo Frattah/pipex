@@ -6,11 +6,11 @@
 #    By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 10:58:18 by frmonfre          #+#    #+#              #
-#    Updated: 2023/05/22 11:05:54 by frmonfre         ###   ########.fr        #
+#    Updated: 2023/05/26 10:51:16 by frmonfre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	pipex.c str_utils.c split.c free.c execution.c
+SRCS	=	pipex.c str_utils1.c str_utils2.c free_error.c execution.c
 
 OBJS	=	$(SRCS:.c=.o)
 

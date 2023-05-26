@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 10:39:44 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/18 10:42:12 by frmonfre         ###   ########.fr       */
+/*   Updated: 2023/05/26 09:30:56 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*skpstr(char *s, char c)
 	return (s);
 }
 
-size_t	ft_strlen_chr(const char *s, char c)
+size_t	ft_strlen(const char *s, char c)
 {
 	size_t	ln;
 
@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 	while (s != NULL && *s != 0 && words--)
 	{
 		s_cpy = skpstr(s_cpy, c);
-		len = ft_strlen_chr(s_cpy, c);
+		len = ft_strlen(s_cpy, c);
 		*split = (char *) malloc(sizeof(char) * (len + 1));
 		if (*split == NULL)
 			return (NULL);
