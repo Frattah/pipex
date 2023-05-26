@@ -1,4 +1,3 @@
-
 #include "pipex.h"
 
 char	*find_env_var(char **envp, char *var)
