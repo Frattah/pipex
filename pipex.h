@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: frmonfre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 08:36:04 by frmonfre          #+#    #+#             */
-/*   Updated: 2023/05/26 10:54:10 by frmonfre         ###   ########.fr       */
+/*   Created: 2023/05/17 10:17:43 by frmonfre          #+#    #+#             */
+/*   Updated: 2023/05/26 11:49:21 by frmonfre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct pipex_ist
 
 size_t		cntword(char const *s, char c);
 char		*skpstr(char *s, char c);
+int			isin(char *s, char c);
 size_t		ft_strlen(const char *s, char c);
 char		**ft_split(char const *s, char c);
 // ---------------------------------------
@@ -52,5 +53,11 @@ void		exec(char *cmd, char **envp);
 
 t_pipex_ist	*pipex_ist_init(int ac, char **av, char **en);
 void		child_rout(t_pipex_ist *ist, char *cmd, int i);
+
+// --------- Error handling --------------
+
+void		short_err_mess(char *err);
+void		free_char_sstar(char **src);
+void		short_err_mess(char *err);
 
 #endif
