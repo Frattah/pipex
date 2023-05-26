@@ -46,6 +46,5 @@ void		exec(char *cmd, char **envp);
 void		redir(t_pipex_ist *ist, int i);
 t_pipex_ist	*pipex_ist_init(int ac, char **av);
 int			launch(t_pipex_ist *ist, char **av, char **en);
-int			main(int ac, char **av, char **en);
 
 #endif
