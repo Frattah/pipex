@@ -27,7 +27,7 @@ char	*find_env_var(char **envp, char *var)
 
 char	*find_exec(char **src, char *cmd)
 {
-	ft_strlcpy(*src, *src + 5, ft_strlen(*src, '\0'));
+	ft_strlcpy(*src, *src + 5, ft_strlen(*src, '\0') - 5);
 	while (*src)
 	{
 		*src = ft_strconc(*src, ft_strdup("/"));
